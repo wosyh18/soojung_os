@@ -1,8 +1,10 @@
 pipeline {
     agent any
+    
 
     stages {
 
+        //git clone
         stage('git clone'){
             steps{
                 git branch: 'main',
@@ -29,6 +31,18 @@ pipeline {
                 }
             }
 
-        }        
+        }  
+        stage('sh') {
+            steps {
+                script{
+                    try(){
+                        
+                        sh "exit 1"
+                    }catch(Exeption err){
+
+                    }
+                }
+            }
+        }      
     }
 }
