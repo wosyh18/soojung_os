@@ -1,48 +1,26 @@
 pipeline {
     agent any
+
     
 
     stages {
-
-        //git clone
         stage('git clone'){
             steps{
                 git branch: 'main',
-                credentialsId: '4ec798f6-b601-41a2-8d8a-38a06ae986a7',
+                credentialsId: 'so21yeon11',
                 url: 'https://github.com/wosyh18/soojung_os.git'
-                }
-            }
-        
-
-        stage('Build image') {
-            steps {
-                script{
-                app = docker.build("so21yeon11")
-                }
             }
         }
-        
-       stage('Push image') {
+        stage('Build') {
             steps {
-                script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'so21yeon11') {
-                            app.push("latest")
-                    }
-                }
+                sh 'docker build -t my-image:latest .'
             }
-
-        }  
-        stage('sh') {
+        }
+        stage('Push') {
             steps {
-                script{
-                    try(){
-                        
-                        sh "exit 1"
-                    }catch(Exeption err){
-
-                    }
-                }
+                sh 'docker tag my-image so21yeon11/my-image'
+                sh 'docker push so21yeon11/my-image:latest'
             }
-        }      
+        }
     }
 }
