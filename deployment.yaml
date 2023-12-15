@@ -31,7 +31,8 @@ metadata:
     app: soojung
 spec:
   ports:
-  - nodePort: 30401
+  - name: soojung
+    nodePort: 30401
     port: 8081
     targetPort: 80
   selector:
