@@ -15,10 +15,11 @@ spec:
     metadata:
       labels:
         app: soojung
+        tier: soojung
     spec:
       containers:
       - name: soojung
-        image: nginx:latest
+        image: so21yeon11/my-image:latest
         ports:
         - containerPort: 5000
           name: soojung
@@ -35,4 +36,5 @@ spec:
     targetPort: 5000
   selector:
     app: soojung
+    tier: soojung
   type: LoadBalancer
