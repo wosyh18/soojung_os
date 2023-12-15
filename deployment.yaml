@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soojung
+  labels:
+    app: soojung
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: soojung
+  template:
+    metadata:
+      labels:
+        app: soojung
+    spec:
+      containers:
+      - name: soojung
+        image: nginx:latest
+        ports:
+        - containerPort: 5000
+          name: soojung
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: soojung
+  labels:
+    app: soojung
+spec:
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: soojung
+  type: LoadBalancer
