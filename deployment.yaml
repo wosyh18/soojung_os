@@ -19,6 +19,9 @@ spec:
       containers:
       - name: my-image
         image: so21yeon11/my-image:latest
+        ports:
+        - containerPort: 5000
+          name: soojung
 ---
 apiVersion: v1
 kind: Service
@@ -29,9 +32,9 @@ metadata:
 spec:
   ports:
   - name: soojung
-    protocol: TCP
-    port: 80
-    targetPort: 80
+    nodePort: 30401
+    port: 8081
+    targetPort: 5000
   selector:
     app: soojung
   type: LoadBalancer
