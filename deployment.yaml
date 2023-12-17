@@ -17,7 +17,7 @@ spec:
         app: soojung
     spec:
       containers:
-      - name: soojung
+      - name: my-image
         image: so21yeon11/my-image:latest
         ports:
         - containerPort: 80
