@@ -21,6 +21,7 @@ pipeline {
                 }
             }
         }
+ //이미지 푸쉬 stage
         stage("Push image") {
             steps {
                 script {
