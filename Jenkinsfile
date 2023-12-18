@@ -6,6 +6,7 @@ pipeline {
         LOCATION = 'asia-northeast3-a'
         CREDENTIALS_ID ='0193e2c3-c654-4796-be29-173758f914e5'
     }
+    // git clone 해주는 stage
     stages {
         stage("Checkout code") {
             steps {
