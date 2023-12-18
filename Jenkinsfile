@@ -35,7 +35,7 @@ pipeline {
 				branch 'main'
 			}
             steps{
-                sh "sed -i 's/my-image:latest/my-image:${env.BUILD_ID}/g' deployment.yaml"
+                sh 'export PATH=$PATH:/path/to/kubectl' // /path/to/kubectl을 실제 kubectl 경로로 변경
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
         }
