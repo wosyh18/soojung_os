@@ -29,6 +29,14 @@ pipeline {
                 }
             }
         }
+        stage('Set Kubectl Path') {
+            steps {
+                script {
+                    def kubectlPath = tool 'kubectl' // 'kubectl'은 Jenkins에서 설정한 툴의 이름입니다.
+                    env.PATH = "${kubectlPath}:${env.PATH}"
+             }
+         }
+    }
         stage('Deploy to GKE') {
 			when {
 				branch 'main'
