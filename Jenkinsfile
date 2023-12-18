@@ -13,6 +13,7 @@ pipeline {
                 checkout scm
             }
         }
+// 이미지 빌드 stage
         stage("Build image") {
             steps {
                 script {
