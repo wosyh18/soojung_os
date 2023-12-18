@@ -6,13 +6,14 @@ pipeline {
         LOCATION = 'asia-northeast3-a'
         CREDENTIALS_ID ='0193e2c3-c654-4796-be29-173758f914e5'
     }
-// git clone 해주는 stage
+// git clone 역할 stage
     stages {
         stage("Checkout code") {
             steps {
                 checkout scm
             }
         }
+// 이미지 빌드 stage
         stage("Build image") {
             steps {
                 script {
@@ -20,6 +21,7 @@ pipeline {
                 }
             }
         }
+ //이미지 푸쉬 stage
         stage("Push image") {
             steps {
                 script {
@@ -30,6 +32,7 @@ pipeline {
                     }
                 }
             }
+//deploy stage
         stage('Deploy to GKE') {
             when {
                 branch 'main'
