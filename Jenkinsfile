@@ -38,7 +38,7 @@ pipeline {
                 branch 'main'
             }
             steps{
-                sh "sed -i 's/my-image:latest/my-image:${env.BUILD_ID}/g' deployment.yaml"
+                sh "sed -i 's/so21yeon11\\/my-image:latest/so21yeon\\/my-image:${env.BUILD_ID}/g' deployment.yaml"
                 sh 'export PATH=$PATH:/usr/local/bin'
                 step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'deployment.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
             }
