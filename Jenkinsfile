@@ -7,7 +7,7 @@ pipeline {
         LOCATION = 'asia-northeast3-a'
         CREDENTIALS_ID ='0193e2c3-c654-4796-be29-173758f914e5'
     }
-// git clone 역할 stage
+// git clone 역할 stage.
     stages {
         stage("Checkout code") {
             steps {
@@ -26,10 +26,10 @@ pipeline {
         stage("Push image") {
             steps {
                 script {
-                   docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                     myapp.push("latest")
-                     myapp.push("${env.BUILD_ID}")
-                       }
+                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                    myapp.push("latest")
+                    myapp.push("${env.BUILD_ID}")
+                    }
                     }
                 }
             }
