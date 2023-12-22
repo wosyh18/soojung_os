@@ -32,6 +32,7 @@ pipeline {
                     }
                 }
             }
+            
 //deploy stage
         stage('Deploy to GKE') {
             when {
