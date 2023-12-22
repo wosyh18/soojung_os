@@ -1,3 +1,4 @@
+//Jenkinsfile
 pipeline {
     agent any
         environment{
@@ -33,7 +34,7 @@ pipeline {
                 }
             }
 
-//deploy stage.
+//deploy stage
         stage('Deploy to GKE') {
             when {
                 branch 'main'
